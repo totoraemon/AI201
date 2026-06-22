@@ -45,7 +45,7 @@ Predicted Label: balance_discussion
 
 Why the Boundary is Hard: This post uses heavy in-game strategic vocabulary (lane swap strategy, winning matchup, win condition) to critique a competitive match. While the core intent is evaluating a specific pro match tournament event (esports_discourse), the vocabulary profile heavily overlaps with mechanical meta discussions. DistilBERT over-indexed on the gameplay keywords and missed the higher-level tournament framework.
 
-Problem Type & Change Required: This is a training data distribution problem. To fix it, we need to add more diverse examples to esports_discourse that explicitly capture pro-draft analysis, pick/ban choices, and match strategy discussions. This will teach the smaller model that deep gameplay vocabulary remains esports_discourse when anchored around professional teams like FlyQuest, Team Liquid, or the LCK.
+Problem Type & Change Required: This is a training data distribution problem. To fix it, I need to add more diverse examples to esports_discourse that explicitly capture pro-draft analysis, pick/ban choices, and match strategy discussions. This will teach the smaller model that deep gameplay vocabulary remains esports_discourse when anchored around professional teams like FlyQuest, Team Liquid, or the LCK.
 
 ### Error Example 2: The Pro Champion Pool Discussion
 Post Text: "I really hope they don't nerf Maokai support into the ground just because he's a flex pick in competitive. He feels completely fine to play against in solo queue where teams don't coordinate around his sapling vision control perfectly."
@@ -56,7 +56,7 @@ Predicted Label: balance_discussion
 
 Why the Boundary is Hard: The text directly references game balancing (nerf Maokai support, utility kit) while establishing the context around the character's status as a top-tier competitive pick. Because the text balances mechanical changes with professional relevance, a 66-million-parameter model defaults to the raw tuning label (balance_discussion), failing to capture the systemic pro-meta perspective.
 
-Problem Type & Change Required: This is a label definition edge case. We need to explicitly supply the model with training instances where patches are evaluated purely through a pro-scene framework, thereby establishing a firmer boundary separation between local matchmaking rants and international tournament meta trends.
+Problem Type & Change Required: This is a label definition edge case. I need to explicitly supply the model with training instances where patches are evaluated purely through a pro-scene framework, thereby establishing a firmer boundary separation between local matchmaking rants and international tournament meta trends.
 
 ---
 
@@ -108,5 +108,8 @@ The strict Mutual Exclusivity Constraint specified in the document kept me from 
 *Annotation Pre-Labeling Strategy*: I utilized Groq's Llama-3.3-70b interface to pre-label an initial batch of 100 entries. I cross-referenced every row manually, correcting 14 misclassifications where the model tripped over sarcastic formatting. I explicitly logged this process via my dataset tracking columns to ensure data integrity.
 
 *Error Feature Discovery*: I provided my misclassified test logs to an AI tool to isolate pattern weaknesses. It correctly highlighted that the fine-tuned model consistently misclassified posts containing both a pro-team name and raw balance statistics. This guided my final evaluation write-up.
+
+## Video Link
+https://drive.google.com/file/d/1aVx3uyaajO91EEUFTUvsx084Ak78BgsK/view?usp=sharing
 
 ---
