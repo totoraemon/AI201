@@ -1,0 +1,12 @@
+{
+  "baseline_accuracy": 1.0,
+  "finetuned_accuracy": 0.9355,
+  "improvement": -0.0645,
+  "test_set_size": 31,
+  "label_map": {
+    "balance_discussion": 0,
+    "esports_discourse": 1,
+    "community_meta": 2
+  },
+  "model": "distilbert-base-uncased"
+}
